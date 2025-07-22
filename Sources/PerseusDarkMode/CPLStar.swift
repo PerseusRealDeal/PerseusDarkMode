@@ -1,6 +1,6 @@
 //
 //  CPLStar.swift
-//  Version: 1.5.0
+//  Version: 1.5.1
 //
 //  Standalone ConsolePerseusLogger.
 //
@@ -409,17 +409,17 @@ public class PerseusLogger {
 
         guard
             let year = components.year,
-            let month = components.month?.inTime,
-            let day = components.day?.inTime else { return ("TIME", "TIME") }
+            let month = components.month?.toPrint,
+            let day = components.day?.toPrint else { return ("TIME", "TIME") }
 
         let date = "\(year)-\(month)-\(day)"
 
         // Parse time.
 
         guard
-            let hour = components.hour?.inTime, // Always in 24-hour.
-            let minute = components.minute?.inTime,
-            let second = components.second?.inTime,
+            let hour = components.hour?.toPrint, // Always in 24-hour.
+            let minute = components.minute?.toPrint,
+            let second = components.second?.toPrint,
             let subsecond = components.nanosecond?.multiply else { return ("TIME", "TIME") }
 
         let time = "\(hour):\(minute):\(second):\(subsecond)"
@@ -465,7 +465,7 @@ public class PerseusLogger {
 
 private extension Int {
 
-    var inTime: String {
+    var toPrint: String {
         guard self >= 0, self <= 9 else { return String(self) }
         return "0\(self)"
     }
