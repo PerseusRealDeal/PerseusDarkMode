@@ -1,49 +1,75 @@
 # PerseusDarkMode — Xcode 14.2+
 
-> [`iOS approbation app`](https://github.com/perseusrealdeal/TheOneRing) [`macOS approbation app`](https://github.com/perseusrealdeal/Arkenstone)
-
-> The light-weight darkness in Swift you can force. Hereinafter PDM stands for `P`erseus `D`ark `M`ode.<br/>
-
-> - To build option kinda `Night/Day/System Mode` or `On/Off/System Dark Mode`.<br/>
-> - To be awared of Dark Mode changes if you need.<br/>
-
-> `PDM` is a single author and personale solution developed in `person-to-person` relationship paradigm.
-
 [![Actions Status](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml)
 [![Style](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml)
-[![Version](https://img.shields.io/badge/Version-2.0.4-green.svg)](/CHANGELOG.md)
-[![Platforms](https://img.shields.io/badge/Platforms-macOS%2010.13+Cocoa_|_iOS%2011.0+UIKit-orange.svg)](https://en.wikipedia.org/wiki/List_of_Apple_products)
+[![Version](https://img.shields.io/badge/Version-2.1.0-green.svg)](/CHANGELOG.md)
+[![Platforms](https://img.shields.io/badge/Platforms-macOS%2010.13+_|_iOS%2011.0+-orange.svg)](https://en.wikipedia.org/wiki/List_of_Apple_products)
 [![Xcode 14.2](https://img.shields.io/badge/Xcode-14.2+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
 [![Swift 5.7](https://img.shields.io/badge/Swift-5.7-red.svg)](https://www.swift.org)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](/LICENSE)
+
+> Home-made product. The light-weight darkness in Swift you can force.
+
+> `1:` Build option kinda `Night/Day/System Mode` or `On/Off/System Dark Mode`.</br>
+> `2:` Be awared of Dark Mode changes if you need.
+
+> `PDM` is a single author and personale solution developed in `P2P` relationship paradigm.
 
 ## Integration Capabilities
 
 [![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PDMStar.swift)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](/Package.swift)
 
-> Use Stars to adopt [`PDM`](/PDMStar.swift) for the specifics you need.
-
 ## Dependencies
 
-[![ConsolePerseusLogger](http://img.shields.io/:ConsolePerseusLogger-1.5.1-green.svg)](https://github.com/perseusrealdeal/ConsolePerseusLogger.git)
+[![ConsolePerseusLogger](http://img.shields.io/:ConsolePerseusLogger-1.6.0-green.svg)](https://github.com/perseusrealdeal/ConsolePerseusLogger.git)
 
-# Support Code
+## Support Code
 
 [![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PDMSupportingStar.swift)
 [![License](http://img.shields.io/:License-Unlicense-green.svg)](http://unlicense.org/)
 
-> [`PDMSupportingStar.swift`](/PDMSupportingStar.swift) is a peace of code a widly helpful in accord with PDM.
+> [`PDMSupportingStar.swift`](/PDMSupportingStar.swift) is a peace of code a widly helpful in accord with PDM.</br>
+> `PDMSupportingStar.swift` goes as an external part of PDM.
 
-> PDMSupportingStar.swift goes as an external part of PDM.
+## Our Terms
 
-## Approbation Matrix
+> [`CPL`](https://github.com/perseusrealdeal/ConsolePerseusLogger.git) stands for `C`onsole `P`erseus `L`ogger.</br>
+> [`PGK`](https://github.com/perseusrealdeal/PerseusGeoKit.git) stands for `P`erseus `G`eo `K`it.</br>
+> [`PDM`](https://github.com/perseusrealdeal/PerseusDarkMode.git) stands for `P`erseus `D`ark `M`ode.</br>
+> `P2P` stands for `P`erson-`to`-`P`erson.</br>
+> [`A3`](https://docs.google.com/document/d/1K2jOeIknKRRpTEEIPKhxO2H_1eBTof5uTXxyOm5g6nQ) stands for `A`pple `A`pps `A`pprobation.</br>
+> [`T3`](https://github.com/perseusrealdeal/TheTechnologicalTree) stands for `T`he `T`echnological `T`ree.
 
-> [`A3 Environment and Approbation`](/APPROBATION.md) / [`CHANGELOG`](/CHANGELOG.md) for details.
+## PDM in Use
 
-## In brief > Idea to use, the Why
+> `In approbation:` [`iOS app`](https://github.com/perseusrealdeal/TheOneRing) [`macOS app`](https://github.com/perseusrealdeal/Arkenstone)</br>
+> `In business:` [`The Dark Moon`](https://github.com/perseusrealdeal/TheDarkMoon)
 
-> THE DARKNESS YOU CAN FORCE.</br>
+> `For details:` [`Approbation and A3 Environment`](/APPROBATION.md) / [`CHANGELOG`](/CHANGELOG.md)</br>
+
+# Contents
+
+* [In brief](#In-brief)
+* [Build requirements](#Build-requirements)
+* [First-party software](#First-party-software)
+* [Third-party software](#Third-party-software)
+* [Installation](#Installation)
+    * [Cocoa macOS project](#Cocoa-macOS-project)
+    * [UIKit iOS project](#UIKit-iOS-project)
+* [Usage](#Usage)
+    * [Force Dark Mode](#Force-Dark-Mode)
+    * [Get awared of DarkMode changes](#Get-awared-of-DarkMode-changes)
+    * [DarkMode change sample](#DarkMode-change-sample)
+* [Points taken into account](#Points-taken-into-account)
+* [License MIT](#License-MIT)
+    * [Other Required License Notices](#Other-Required-License-Notices)
+* [Credits](#Credits)
+* [Author](#Author)
+
+# In brief
+
+> THE DARKNESS YOU CAN FORCE</br>
 
 <table>
   <tr>
@@ -64,7 +90,7 @@
 > [!IMPORTANT]
 > Screenshots taken from Approbation Apps [`iOS`](https://github.com/perseusrealdeal/TheOneRing) and [`macOS`](https://github.com/perseusrealdeal/Arkenstone).
 
-## Build requirements
+# Build requirements
 
 - [macOS Monterey 12.7.6+](https://apps.apple.com/by/app/macos-monterey/id1576738294) / [Xcode 14.2+](https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_14.2/Xcode_14.2.xip)
 
@@ -74,7 +100,7 @@
 
 | Type | Name                                                                                                                                                                  | License |
 | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| Star | [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.5.1](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.5.1) | MIT     |
+| Star | [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.6.0](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.6.0) | MIT     |
 
 # Third-party software
 
@@ -93,7 +119,7 @@
 
 > Swift Package Manager: `https://github.com/perseusrealdeal/PerseusDarkMode`
 
-## Steps for Cocoa macOS project
+## Cocoa macOS project
 
 `Step 2:` In the AppDelegate when `applicationDidFinishLaunching` call `force`
 
@@ -139,7 +165,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
 
 ```
 
-## Steps for UIKit iOS project
+## UIKit iOS project
 
 `Step 2:` In the AppDelegate when `didFinishLaunchingWithOptions` call `force`
 
@@ -231,11 +257,11 @@ DarkModeAgent.force(.off) // It's a sunny day for the app.
 
 The `force` will change the appearance of your app immediately including system components and will make run all custom DarkMode code `makeUp()`.
 
-## Get awared of DarkMode Changes
+## Get awared of DarkMode changes
 
-> To declare custom DarkMode sensitive code that runs every time if DarkMode Changes register the object or creat a DarkMode trigger:
+> To declare custom DarkMode sensitive code that runs every time if DarkMode Changes register the object or create a DarkMode trigger:
 
-`Use Case -` Register an object to be notified on changes
+`Use Case 1:` Register an object to be notified on changes
 
 ```swift
 
@@ -252,7 +278,7 @@ class DarkModeSensitiveObject {
 
 ```
 
-`Use Case -` Creat a DarkMode trigger and give it an action
+`Use Case 2:` Create a DarkMode trigger and give it an action
 
 ```swift
 
@@ -273,9 +299,9 @@ class DarkModeSensitiveObject {
 
 ```
 
-## React to DarkMode Changes
+## DarkMode change sample
 
-`Use Case -` Custom DarkMode Sensitive Color
+`Use Case:` Custom DarkMode sensitive color
 
 ```swift
 
@@ -309,11 +335,12 @@ extension Color {
 
 ```
 
-> Use Custom DarkMode sensitive color.
+> And use custom DarkMode sensitive color:
 
 ```swift
 
-// Runs every time if the DarkMode changes. Use KVO (DarkModeObserver) or be registered by DarkModeAgent. 
+// Runs every time if the DarkMode changes. 
+// Use KVO (DarkModeObserver) or be registered with DarkModeAgent. 
 @objc private func makeUp() {
     self.backgroundColor = .customRed
 }
@@ -330,8 +357,8 @@ extension Color {
 
 # License MIT
 
-Copyright © 7530 - 7533 Mikhail A. Zhigulin of Novosibirsk<br/>
-Copyright © 7533 PerseusRealDeal
+Copyright © 7530 - 7534 Mikhail A. Zhigulin of Novosibirsk<br/>
+Copyright © 7533 - 7534 PerseusRealDeal
 
 - The year starts from the creation of the world according to a Slavic calendar.
 - September, the 1st of Slavic year. It means that "Sep 01, 2024" is the beginning of 7533.
