@@ -5,6 +5,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
+## [2.1.0] - [2025-10-30], PerseusDarkMode
+
+### Added
+
+- Contents section to README.
+
+### Updated
+
+- CPL dependency to v1.6.0.
+
 ## [2.0.4] - [2025-07-22], PerseusDarkMode
 
 ### Changed

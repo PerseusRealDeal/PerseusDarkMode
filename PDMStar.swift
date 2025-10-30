@@ -1,26 +1,26 @@
 //
 //  PDMStar.swift
-//  Version: 2.0.4
+//  Version: 2.1.0
 //
 //  Standalone PerseusDarkMode.
 //
 //
 //  For iOS and macOS only. Use Stars to adopt for the specifics you need.
 //
-//  DESC: THE DARKNESS YOU CAN FORCE.
+//  DESC: THE DARKNESS YOU CAN FORCE
 //
 //  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright © 7530 - 7533 Mikhail Zhigulin of Novosibirsk
-//  Copyright © 7533 PerseusRealDeal
+//  Copyright © 7530 - 7534 Mikhail Zhigulin of Novosibirsk
+//  Copyright © 7533 - 7534 PerseusRealDeal
 //
 //  All rights reserved.
 //
 //
 //  MIT License
 //
-//  Copyright © 7530 - 7533 Mikhail A. Zhigulin of Novosibirsk
-//  Copyright © 7533 PerseusRealDeal
+//  Copyright © 7530 - 7534 Mikhail A. Zhigulin of Novosibirsk
+//  Copyright © 7533 - 7534 PerseusRealDeal
 //
 //  The year starts from the creation of the world according to a Slavic calendar.
 //  September, the 1st of Slavic year.
