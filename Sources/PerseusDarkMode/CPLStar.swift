@@ -1,6 +1,6 @@
 //
 //  CPLStar.swift
-//  Version: 1.6.0
+//  Version: 1.7.0
 //
 //  Standalone ConsolePerseusLogger.
 //
@@ -27,7 +27,7 @@
 //  Copyright © 7531 - 7534 PerseusRealDeal
 //
 //  The year starts from the creation of the world according to a Slavic calendar.
-//  September, the 1st of Slavic year.
+//  September, the 1st of Slavic year. It means that "Sep 01, 2025" is the beginning of 7534.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -62,6 +62,63 @@ protocol PerseusDelegatedMessage: AnyObject {
     var message: String { get set }
 }
 
+public struct LogMessage {
+
+    public let text: String
+    public let level: PerseusLogger.Level
+    public let localTime: PerseusLogger.LocalTime
+    public let owner: PerseusLogger.PIDandTID
+    public let user: PerseusLogger.User
+    public let fileline: PerseusLogger.Directives
+
+    public func getMessage(mode: PerseusLogger.LineMode = .singleLine) -> String {
+
+        var tags = ""
+
+        // Type.
+
+        let isTyped =
+        (log.format == .full) ? true : log.marks && (log.format != .textonly)
+
+        tags = isTyped ? "\(level.tag)" : tags
+
+        // Time.
+
+        let isTimed =
+        (log.format == .full) ? true : log.marks && log.time && (log.format != .textonly)
+
+        if isTimed {
+            let tag = "[\(localTime.date)] [\(localTime.time)]"
+            tags = tags.isEmpty ? "\(tag)" : "\(tags) \(tag)"
+        }
+
+        // PID and TID.
+
+        let withOwnerId =
+        (log.format == .full) ? true : log.owner && (log.format != .textonly)
+
+        if withOwnerId {
+            let tag = "[\(owner.pid):\(owner.tid)]"
+            tags = tags.isEmpty ? "\(tag)" : "\(tags) \(tag)"
+        }
+
+        // Path.
+
+        let withPath =
+        (log.format == .full) ? true : log.directives && (log.format != .textonly)
+
+        let messageText =
+        withPath ? "\(text), file: \(fileline.fileName), line: \(fileline.line)" : "\(text)"
+
+        switch mode {
+        case .singleLine:
+            return tags.isEmpty ? "\(messageText)" : "\(tags) \(messageText)"
+        case .multiLine:
+            return tags.isEmpty ? "\(messageText)" : "\(tags)\r\n\(messageText)"
+        }
+    }
+}
+
 public class PerseusLogger {
 
     // MARK: - Typealiases
@@ -71,9 +128,7 @@ public class PerseusLogger {
     public typealias PIDandTID = (pid: String, tid: String) // PID and Thread ID.
     public typealias Directives = (fileName: String, line: UInt) // #file and #line.
 
-    public typealias MessageDelegate = (
-        (String, Level, LocalTime, PIDandTID, User, Directives) -> Void
-    )
+    public typealias MessageDelegate = ((_ instance: LogMessage) -> Void)
 
     // MARK: - Constants
 
@@ -90,7 +145,7 @@ public class PerseusLogger {
     public enum Output: String, Decodable, CaseIterable {
         case standard // In Use: Swift.print("").
         case consoleapp // In Use: Logger structure from iOS 14.0, macOS 11.0, NSLog otherwise.
-        case custom // In Use: customActionOnMessage?(_:_:_:_:_:_:).
+        case custom // In Use: customActionOnMessage?(_:).
     }
 
     // log.message("Notification...", .notice, .custom, .enduser)
@@ -187,6 +242,11 @@ public class PerseusLogger {
 // message
     }
 
+    public enum LineMode {
+        case singleLine
+        case multiLine
+    }
+
     // MARK: - Properties
 
     public static var customActionOnMessage: PerseusLogger.MessageDelegate?
@@ -207,6 +267,7 @@ public class PerseusLogger {
     // MARK: - Message Details Visibility Flags
 
     public static var format = MessageFormat.short
+    public static var linemode = LineMode.singleLine
 
     // [TYPE] [DATE] [TIME] [PID:TID] message, file: #, line: #
     public static var marks = true // [TYPE]
@@ -270,51 +331,31 @@ public class PerseusLogger {
             return
         }
 
-        var message = ""
+        // Get message details.
 
-        // Path.
-
-        let withDirectives = (format == .full) ? true : directives && (format != .textonly)
-        let fileName = (file.description as NSString).lastPathComponent
-
-        if withDirectives {
-            message = "\(text()), file: \(fileName), line: \(line)"
-        } else {
-            message = "\(text())"
-        }
-
-        // PID and TID.
-
-        let withOwnerId = (format == .full) ? true : owner && (format != .textonly)
-        let idTuple = getPIDandTID()
-
-        if withOwnerId {
-            message = "[\(idTuple.pid):\(idTuple.tid)] \(message)"
-        }
-
-        // Time.
-
-        let isTimed = (format == .full) ? true : marks && time && (format != .textonly)
-        let localTime = getLocalTime()
-
-        if isTimed {
-            message = "[\(localTime.date)] [\(localTime.time)] \(message)"
-        }
-
-        // Type.
-
-        let isTyped = (format == .full) ? true : marks && (format != .textonly)
-        message = isTyped ? "\(type.tag) \(message)" : message
+        let details = LogMessage(
+            text: text(),
+            level: type,
+            localTime: getLocalTime(),
+            owner: getPIDandTID(),
+            user: user,
+            fileline: (fileName: (file.description as NSString).lastPathComponent, line: line)
+        )
 
         // Print.
 
         if oput == .custom {
-            let directives: Directives = (fileName: fileName, line: line)
-            customActionOnMessage?(message, type, localTime, idTuple, user, directives)
+            customActionOnMessage?(details)
         } else {
-            print(message, type, oput)
+            print(details, type, oput)
         }
     }
+
+}
+
+// MARK: - Contract for CPL json config profile
+
+extension PerseusLogger {
 
     public static func loadConfig(_ profile: ProfileCPL) -> Bool {
         if let data = profile.json.data(using: .utf8) {
@@ -345,12 +386,16 @@ public class PerseusLogger {
         log.message("CPL config file doesn't exist!", .error)
         return false
     }
+}
 
-    // MARK: - Implementation
+// MARK: - Implementation
+
+extension PerseusLogger {
 
     // swiftlint:disable:next cyclomatic_complexity
-    private static func print(_ text: String, _ type: Level, _ output: Output) {
+    private static func print(_ instance: LogMessage, _ type: Level, _ output: Output) {
 
+        let text = instance.getMessage(mode: log.linemode)
         let message = (text: text, type: type)
 
         if output == .standard {
@@ -663,6 +708,11 @@ extension PerseusLogger {
         }
 
         public var text: String { report }
+        public var linemode: LineMode = .singleLine {
+            didSet {
+                removeMessages()
+            }
+        }
 
         // MARK: - Constants
 
@@ -684,27 +734,24 @@ extension PerseusLogger {
 
         // MARK: - Contract
 
-        // swiftlint:disable:next function_parameter_count
-        public func report(_ text: String,
-                           _ type: Level,
-                           _ localTime: LocalTime,
-                           _ owner: PIDandTID,
-                           _ user: User,
-                           _ dirs: Directives) {
+        public func report(_ instance: LogMessage) {
 
-            let text = text.replacingOccurrences(of: "\(type.tag) ", with: "")
-            lastMessage = "[\(localTime.date)] [\(localTime.time)] \(type.tag)\r\n\(text)"
+            lastMessage = instance.getMessage(mode: self.linemode)
 
-            if user == .enduser {
-                delegate?.message = text
+            if instance.user == .enduser {
+                delegate?.message = instance.text
             }
         }
 
         public func clear() {
-            report = ""
+            removeMessages()
         }
 
         // MARK: - Realization
+
+        private func removeMessages() {
+            report = ""
+        }
 
         private func resizeReportIfNeeded() {
 
@@ -712,7 +759,7 @@ extension PerseusLogger {
             let nlCount = newLine.count
 
             // Can the last message be reported?
-            guard lmCount != 0, lmCount < limit else {
+            guard lmCount != 0, lmCount <= limit else {
                 return
             }
 
@@ -724,7 +771,7 @@ extension PerseusLogger {
 
             // What length to remove?
             let messages = report.components(separatedBy: newLine)
-            let messagesCount = messages.count - 1
+            let messagesCount = messages.count
 
             var lengthToRemove = 0
             var itemCount = 0
@@ -732,11 +779,11 @@ extension PerseusLogger {
             for item in messages {
 
                 itemCount += 1
-                let newLineLength = messagesCount == 0 ? 0 : nlCount
+                let newLineLength = messagesCount == 1 ? 0 : nlCount
 
                 lengthToRemove += (item.count + newLineLength)
 
-                if itemCount == messagesCount, messagesCount > 2 {
+                if itemCount == messagesCount, messagesCount >= 2 {
                     lengthToRemove -= nlCount // There's no new line in the report end
                 }
 
@@ -760,7 +807,7 @@ extension PerseusLogger {
 
         private func appendLastMessageToReport() {
 
-            guard lastMessage.isEmpty == false, lastMessage.count < limit else {
+            guard lastMessage.isEmpty == false, lastMessage.count <= limit else {
                 return
             }
 

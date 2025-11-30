@@ -1,6 +1,6 @@
 //
 //  PDMStar.swift
-//  Version: 2.1.0
+//  Version: 2.1.1
 //
 //  Standalone PerseusDarkMode.
 //
@@ -23,7 +23,7 @@
 //  Copyright © 7533 - 7534 PerseusRealDeal
 //
 //  The year starts from the creation of the world according to a Slavic calendar.
-//  September, the 1st of Slavic year.
+//  September, the 1st of Slavic year. It means that "Sep 01, 2025" is the beginning of 7534.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
