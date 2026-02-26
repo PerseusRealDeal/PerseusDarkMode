@@ -3,7 +3,7 @@
 //  PerseusDarkMode
 //
 //
-//  For iOS and macOS only. Use Stars to adopt for the specifics you need.
+//  Stars to adopt for the specifics you need.
 //
 //  DESC: THE DARKNESS YOU CAN FORCE
 //
