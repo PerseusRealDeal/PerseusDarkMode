@@ -16,10 +16,27 @@ import XCTest
 
 final class FunctionalTests: XCTestCase {
 
-    // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
+    override static func setUp() {
+        super.setUp()
 
-    func test_the_first_success() {
+        log.marks = true
+        log.directives = true
         log.time = true
-        log.message(#function)
+        log.owner = true
+    }
+/*
+    override static func tearDown() {
+        super.tearDown()
+    }
+
+    func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
+*/
+    func test_the_first_success() {
+        log.message("[\(type(of: self))].\(#function)")
+
+        let isReseted = log.loadConfig(.defaultDebug)
+        let result = isReseted ? "CPL options loaded." : "Failed to load options!"
+
+        log.message(result)
     }
 }

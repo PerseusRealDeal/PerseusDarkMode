@@ -1,10 +1,18 @@
-# Approbation Matrix / PerseusDarkMode 2.0.0 && 2.0.1 && 2.0.2 && 2.0.3 && 2.0.4 && 2.1.0 && 2.1.1 && 2.2.0
+# Approbation Matrix for PerseusDarkMode 
+
+## Approbated Versions
+
+> This report is actual for the following product versions: 
+
+v2.0.0 v2.0.1 v2.0.2 v2.0.3 v2.0.4 v2.1.0 v2.1.1 && **v2.2.0**
+
+## Approbation Note
 
 > NOTE: To catch all log messages Mac Console should be started first then after a little while the logged app.
 
 > Compilation: macOS Monterey 12.7.6 / Xcode 14.2
 
-## macOS approbation result
+# macOS approbation result
 
 > The approbation macOS app for PerseusDarkMode is [Arkenstone](https://github.com/perseusrealdeal/Arkenstone).
 
@@ -19,7 +27,7 @@
 | Sonoma      | 14.7    | ok      | - |
 | Sequoia     | 15.3    | ok      | - |
 
-## iOS approbation result
+# iOS approbation result
 
 > The approbation iOS app for PerseusDarkMode is [The One Ring](https://github.com/perseusrealdeal/TheOneRing).
 
@@ -28,9 +36,9 @@
 | iPad Air        | no        | 12.5.7     | ok      | - |
 | iPhone SE (3rd) | yes       | 16.2       | ok      | - |
 
-## A3 environment
+# A3 environment
 
-### List of available Apple machines
+## List of available Apple machines
 
 > Excluded: virtualization (e.g. VirtualBox) and hackintosh
 
@@ -39,7 +47,7 @@
 | Mac mini    | 16GB   | SATA 480GB, NVMe 256GB |
 | MacBook Pro | 8GB    | 256GB                  |
 
-### System configuration for A3 environment
+## System configuration for A3 environment
 
 | macOS       | Version | Machine     | Xcode  | OpenCore | Git Client     |
 | ----------- | ------- | ----------- | ------ | -------- | -------------- |

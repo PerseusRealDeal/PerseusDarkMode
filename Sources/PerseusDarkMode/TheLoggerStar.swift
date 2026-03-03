@@ -1,10 +1,10 @@
 //
-//  CPLStar.swift
-//  Version: 1.7.0
+//  TheLoggerStar.swift
+//  Version: 1.7.1
 //
 //  Standalone ConsolePerseusLogger.
 //
-//  For iOS and macOS. Use Stars to adopt for the specifics you need.
+//  Stars to adopt for the specifics you need.
 //
 //  DESC: USE LOGGER LIKE A VARIABLE ANYWHERE YOU WANT.
 //
@@ -27,7 +27,7 @@
 //  Copyright © 7531 - 7534 PerseusRealDeal
 //
 //  The year starts from the creation of the world according to a Slavic calendar.
-//  September, the 1st of Slavic year. It means that "Sep 01, 2025" is the beginning of 7534.
+//  September, the 1st of Slavic year. For instance, "Sep 01, 2025" is the beginning of 7534.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
