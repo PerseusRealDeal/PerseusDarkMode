@@ -5,6 +5,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
+## [2.2.0] - [2026-03-03], PerseusDarkMode
+
+### Included 
+
+- The support code to the main code.
+
+### Renamed
+
+- `PDMStar.swift` to `TheDarknessStar.swift`.
+
+### Added:
+
+- Minor changes to documentation.
+
+### Updated:
+
+- CPL dependency to v1.7.1.
+
 ## [2.1.1] - [2025-11-30], PerseusDarkMode
 
 ### Updated
